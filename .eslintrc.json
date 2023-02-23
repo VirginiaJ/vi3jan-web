@@ -18,12 +18,7 @@
     "project": ["tsconfig.json"]
   },
   "rules": {
-    "no-console": [
-      2,
-      {
-        "allow": ["warn", "error", "info"]
-      }
-    ],
+    "no-console": 1,
     "no-param-reassign": [
       2,
       {

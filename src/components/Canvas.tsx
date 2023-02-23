@@ -2,11 +2,12 @@ import { OrbitControls, Sparkles } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 
 import { Intro } from "./html/Intro"
+import { coreColors } from "../designConfig/coreColors"
 
 export const MyCanvas = () => (
   <Canvas
     id="canvas"
-    onCreated={({ gl }) => gl.setClearColor("#000")}
+    onCreated={({ gl }) => gl.setClearColor(coreColors.gray600)}
     dpr={[1, 1.5]}
     camera={{
       position: [0, 0, 10],
@@ -21,7 +22,7 @@ export const MyCanvas = () => (
       speed={0.4}
       scale={[10, 3, 6]}
       size={4}
-      color="#f5f"
+      color={coreColors.purple500}
     />
     <ambientLight intensity={2} />
     <OrbitControls />
