@@ -1,8 +1,8 @@
 import { OrbitControls, Sparkles } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
+import { coreColors } from "src/designConfig/coreColors"
 
-import { Intro } from "./html/Intro"
-import { coreColors } from "../designConfig/coreColors"
+import { Intro } from "./Intro"
 
 export const MyCanvas = () => (
   <Canvas

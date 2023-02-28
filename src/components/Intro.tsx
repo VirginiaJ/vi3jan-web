@@ -2,9 +2,10 @@ import { useEffect } from "react"
 
 import { Html } from "@react-three/drei"
 import { useThree } from "@react-three/fiber"
+import { coreColors } from "src/designConfig/coreColors"
+import { useStore } from "src/store"
 
-import { coreColors } from "../../designConfig/coreColors"
-import { useStore } from "../../store"
+import { Paper } from "./UI/Paper"
 
 export const Intro = () => {
   const { gl } = useThree()
@@ -16,7 +17,9 @@ export const Intro = () => {
 
   return (
     <Html>
-      <div style={{ color: "#fff", backgroundColor: "#000" }}>Component</div>
+      <Paper>
+        <div>Component</div>
+      </Paper>
     </Html>
   )
 }
