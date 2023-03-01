@@ -1,6 +1,7 @@
 export const lightThemeColors = {
   primary: "$purple200",
   primaryHover: "$purple300",
+  surface: "$gray100",
   background: "$white",
   textDefault: "$gray500",
   textPlaceholder: "$gray150",

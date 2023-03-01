@@ -1,26 +1,40 @@
+import { createContext, useCallback, useContext, useState } from "react"
+
 import { MyCanvas } from "./components/Canvas"
 import { Button } from "./components/UI/Button"
 import { Icon } from "./components/UI/Icon"
 import { darkMode } from "./designConfig"
-import { useStore } from "./store"
+
+type Themes = "light" | "dark"
+
+const themeContext = createContext<{ theme: Themes }>({ theme: "light" })
+export const useThemeContext = () => useContext(themeContext)
 
 function App() {
-  const isDarkModeEnabled = useStore((state) => state.isDarkModeEnabled)
-  const setIsDarkModeEnabled = useStore((state) => state.setIsDarkModeEnabled)
+  const [currentTheme, setCurrentTheme] = useState<Themes>("light")
+
+  const switchTheme = useCallback(() => {
+    currentTheme === "light"
+      ? setCurrentTheme("dark")
+      : setCurrentTheme("light")
+  }, [currentTheme])
+
   return (
-    <div
-      style={{ height: "100vh" }}
-      className={isDarkModeEnabled ? darkMode : ""}
-    >
-      <MyCanvas />
-      <Button
-        iconButton
-        style={{ position: "absolute", top: 0, left: 0, margin: "10px" }}
-        onClick={() => setIsDarkModeEnabled(!isDarkModeEnabled)}
+    <themeContext.Provider value={{ theme: currentTheme }}>
+      <div
+        style={{ height: "100vh" }}
+        className={currentTheme === "dark" ? darkMode : ""}
       >
-        <Icon iconName="moon" size="large" />
-      </Button>
-    </div>
+        <MyCanvas />
+        <Button
+          iconButton
+          style={{ position: "absolute", top: 0, right: 0, margin: "10px" }}
+          onClick={switchTheme}
+        >
+          <Icon iconName="moon" size="large" />
+        </Button>
+      </div>
+    </themeContext.Provider>
   )
 }
 

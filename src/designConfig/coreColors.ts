@@ -10,7 +10,7 @@ export const coreColors = {
   blue500: "#4395f7",
   blue600: "#177cf5",
   blue700: "#1d6dcc",
-  gray50: "#f5f6f6",
+  gray50: "#f6f6f6",
   gray100: "#e9e9e9",
   gray150: "#b6b6b6",
   gray200: "#8e8e8e",

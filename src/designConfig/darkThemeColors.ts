@@ -1,6 +1,7 @@
 export const darkThemeColors = {
   primary: "$purple700",
   primaryHover: "$purple600",
+  surface: "$gray600",
   background: "$gray600",
   textDefault: "$white",
   textPlaceholder: "$gray200",

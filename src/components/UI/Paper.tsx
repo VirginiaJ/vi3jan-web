@@ -7,20 +7,9 @@ const StyledPaper = styled("div", {
   padding: "4px 12px",
   transition: "background-color 0.2s ease",
   borderRadius: theme.radii.default,
-  variants: {
-    color: {
-      primary: {
-        backgroundColor: theme.colors.primary,
-        color: theme.colors.textOnPrimary,
-        "&:hover": {
-          backgroundColor: theme.colors.primaryHover,
-        },
-      },
-    },
-  },
-  defaultVariants: {
-    color: "primary",
-  },
+  opacity: 0.7,
+  backgroundColor: theme.colors.surface,
+  color: theme.colors.textOnPrimary,
 })
 
 export const Paper = ({
