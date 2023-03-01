@@ -12,7 +12,8 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "three": "^0.149.0",
-    "three-stdlib": "^2.21.8"
+    "three-stdlib": "^2.21.8",
+    "zustand": "^4.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
