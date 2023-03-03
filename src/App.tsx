@@ -22,13 +22,14 @@ function App() {
   return (
     <themeContext.Provider value={{ theme: currentTheme }}>
       <div
+        id="app"
         style={{ height: "100vh" }}
         className={currentTheme === "dark" ? darkMode : ""}
       >
         <MyCanvas />
         <Button
           iconButton
-          style={{ position: "absolute", top: 0, right: 0, margin: "10px" }}
+          style={{ position: "absolute", top: 0, left: 0, margin: "10px" }}
           onClick={switchTheme}
         >
           <Icon iconName="moon" size="large" />

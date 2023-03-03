@@ -1,19 +1,13 @@
-import { Html } from "@react-three/drei"
+import { Text } from "@react-three/drei"
+import { theme } from "src/designConfig"
+import { coreColors } from "src/designConfig/coreColors"
 
-import { Paper } from "../UI/Paper"
-
-export const Intro = () => (
-  <Html>
-    <Paper>
-      <div>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-        dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-        ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-        quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-        Nullam dictum felis eu pede mollis pretium.{" "}
-      </div>
-    </Paper>
-  </Html>
+export const IntroText = () => (
+  <Text fontSize={1} position={[0, 0, 0.001]}>
+    <meshPhongMaterial
+      attach="material"
+      color={theme === "dark" ? coreColors.purple700 : coreColors.purple300}
+    />
+    Hello
+  </Text>
 )

@@ -4,7 +4,7 @@ import { useThemeContext } from "src/App"
 import { coreColors } from "src/designConfig/coreColors"
 
 import { CanvasBackgroundController } from "./three/CanvasBackgroundController"
-import { PaperPlane } from "./three/PaperPlane"
+import { ScrollContent } from "./three/ScrollContent"
 import { Torch } from "./three/Torch"
 
 export const MyCanvas = () => {
@@ -12,6 +12,7 @@ export const MyCanvas = () => {
 
   return (
     <Canvas
+      shadows
       id="canvas"
       onCreated={({ gl }) =>
         gl.setClearColor(theme === "dark" ? "#000" : coreColors.gray50)
@@ -24,7 +25,7 @@ export const MyCanvas = () => {
         fov: 45,
       }}
     >
-      <PaperPlane />
+      <ScrollContent />
       <Torch />
       <Sparkles
         position={[0, 0, -1]}
@@ -35,7 +36,7 @@ export const MyCanvas = () => {
         color={coreColors.purple500}
       />
       <CanvasBackgroundController />
-      <ambientLight intensity={theme === "dark" ? 0 : 2} />
+      <ambientLight intensity={theme === "dark" ? 0.01 : 2} />
     </Canvas>
   )
 }

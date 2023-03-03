@@ -31,6 +31,7 @@ export const Torch = () => {
       color="#FF9F1D"
       intensity={theme === "dark" ? 5 : 0}
       distance={2}
+      castShadow
     />
   )
 }

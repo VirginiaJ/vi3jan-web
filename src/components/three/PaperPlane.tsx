@@ -1,7 +1,6 @@
-import { useMemo, useRef } from "react"
+import { ReactNode, useMemo, useRef } from "react"
 
-import { Html } from "@react-three/drei"
-import { useThree } from "@react-three/fiber"
+import { MeshProps, useThree } from "@react-three/fiber"
 import { coreColors } from "src/designConfig/coreColors"
 import { Mesh, Shape } from "three"
 
@@ -21,27 +20,31 @@ const getShape = (width: number, height: number, radius: number) => {
   return shape
 }
 
-export const PaperPlane = () => {
+interface PaperPlaneProps extends MeshProps {
+  children: ReactNode
+}
+
+export const PaperPlane = ({ children, ...props }: PaperPlaneProps) => {
   const { viewport } = useThree()
-  const margin = 0.5
-  const rectWidth = (viewport.width - 2 * margin) / 2
+  const marginX = 0.8
+  const marginY = 0.1
+  const rectWidth = (viewport.width - 2 * marginX) / 2
+  const rectHeight = (viewport.height - 2 * marginY) / 2
   const paperPlaneRef = useRef<Mesh>(null)
   const roundedRectShape = useMemo(
-    () => getShape(rectWidth, 3, 0.3),
-    [rectWidth]
+    () => getShape(rectWidth, rectHeight, 0.3),
+    [rectWidth, rectHeight]
   )
 
   return (
-    <mesh ref={paperPlaneRef} position={[viewport.width / 4, 0, 0]}>
+    <mesh receiveShadow ref={paperPlaneRef} {...props}>
       <shapeGeometry args={[roundedRectShape]} />
       <meshPhongMaterial
         color={coreColors.gray100}
         transparent={true}
         opacity={0.7}
       />
-      <Html transform position={[0, 0, -2]}>
-        <div style={{ color: "pink" }}>Text Text Text</div>
-      </Html>
+      {children}
     </mesh>
   )
 }
