@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber"
 import { useThemeContext } from "src/App"
 import { coreColors } from "src/designConfig/coreColors"
 
-import { CanvasBackgroundController } from "./three/CanvasBackgroundController"
 import { ScrollContent } from "./three/ScrollContent"
 import { Torch } from "./three/Torch"
 
@@ -14,9 +13,6 @@ export const MyCanvas = () => {
     <Canvas
       shadows
       id="canvas"
-      onCreated={({ gl }) =>
-        gl.setClearColor(theme === "dark" ? "#000" : coreColors.gray50)
-      }
       dpr={[1, 1.5]}
       camera={{
         position: [0, 0, 10],
@@ -25,6 +21,10 @@ export const MyCanvas = () => {
         fov: 45,
       }}
     >
+      <color
+        attach="background"
+        args={[theme === "dark" ? "#000" : coreColors.gray50]}
+      />
       <ScrollContent />
       <Torch />
       <Sparkles
@@ -35,7 +35,6 @@ export const MyCanvas = () => {
         size={4}
         color={coreColors.purple500}
       />
-      <CanvasBackgroundController />
       <ambientLight intensity={theme === "dark" ? 0.01 : 2} />
     </Canvas>
   )
