@@ -13,7 +13,7 @@ const StyledParagraph = styled("div", {
 const StyledHeader = styled("div", {
   fontWeight: 600,
   fontSize: theme.fontSizes.title,
-  color: theme.colors.headerOnSurface,
+  color: theme.colors.textOnPrimary,
 })
 
 const StyledText = styled("div", {
