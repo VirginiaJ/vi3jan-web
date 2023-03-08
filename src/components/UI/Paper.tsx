@@ -7,9 +7,8 @@ const StyledPaper = styled("div", {
   padding: "4px 12px",
   transition: "background-color 0.2s ease",
   borderRadius: theme.radii.default,
-  opacity: 0.7,
-  backgroundColor: theme.colors.surface,
-  color: theme.colors.textOnPrimary,
+  backgroundColor: "rgba(233,233,233,0.7)",
+  color: theme.colors.textOnSurface,
 })
 
 export const Paper = ({

@@ -6,6 +6,8 @@ export const lightThemeColors = {
   textDefault: "$gray500",
   textPlaceholder: "$gray150",
   textOnPrimary: "$purple600",
+  textOnSurface: "$purple200",
+  headerOnSurface: "$purple600",
   borderDefault: "$gray100",
   borderHover: "$gray150",
   borderActive: "$gray500",

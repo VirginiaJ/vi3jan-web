@@ -26,7 +26,7 @@ interface PaperPlaneProps extends MeshProps {
 
 export const PaperPlane = ({ children, ...props }: PaperPlaneProps) => {
   const { viewport } = useThree()
-  const marginX = 0.8
+  const marginX = 0.9
   const marginY = 0.1
   const rectWidth = (viewport.width - 2 * marginX) / 2
   const rectHeight = (viewport.height - 2 * marginY) / 2
@@ -42,9 +42,9 @@ export const PaperPlane = ({ children, ...props }: PaperPlaneProps) => {
       <meshPhongMaterial
         color={coreColors.gray100}
         transparent={true}
-        opacity={0.7}
+        opacity={0.6}
       />
-      {children}
+      <group position={[-rectWidth / 4, 0, 0]}>{children}</group>
     </mesh>
   )
 }

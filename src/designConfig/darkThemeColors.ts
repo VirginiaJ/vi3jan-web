@@ -6,6 +6,8 @@ export const darkThemeColors = {
   textDefault: "$white",
   textPlaceholder: "$gray200",
   textOnPrimary: "$purple200",
+  textOnSurface: "$purple200",
+  headerOnSurface: "$purple700",
   borderDefault: "$gray400",
   borderHover: "$gray300",
   borderActive: "$white",
