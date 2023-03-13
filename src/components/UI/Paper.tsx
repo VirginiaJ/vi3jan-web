@@ -2,10 +2,11 @@ import { styled, theme } from "../../designConfig"
 
 const StyledPaper = styled("div", {
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  padding: "4px 12px",
-  transition: "background-color 0.2s ease",
+  gap: theme.space.medium,
+  padding: theme.space.medium,
   borderRadius: theme.radii.default,
   backgroundColor: theme.colors.surfaceTransparent,
   color: theme.colors.textOnSurface,

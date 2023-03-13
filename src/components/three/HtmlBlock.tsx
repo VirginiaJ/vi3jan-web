@@ -7,8 +7,6 @@ interface ParagraphProps extends HtmlProps {
   children: ReactNode
 }
 
-export const HtmlTextBlock = ({ children, ...props }: ParagraphProps) => (
-  <Html transform {...props}>
-    {children}
-  </Html>
+export const HtmlBlock = ({ children, ...props }: ParagraphProps) => (
+  <Html {...props}>{children}</Html>
 )

@@ -4,14 +4,29 @@ import { styled, theme } from "src/designConfig"
 
 const StyledParagraph = styled("div", {
   display: "flex",
-  alignItems: "flex-start",
   justifyContent: "center",
   flexDirection: "column",
-  padding: "4px 12px",
+  variants: {
+    textAlign: {
+      left: {
+        alignItems: "flex-start",
+      },
+      center: {
+        alignItems: "center",
+      },
+      right: {
+        alignItems: "flex-end",
+      },
+    },
+  },
+  defaultVariants: {
+    textAlign: "left",
+  },
 })
 
-const StyledHeader = styled("div", {
-  fontWeight: 600,
+const StyledHeader = styled("h1", {
+  marginTop: 0,
+  marginBottom: theme.space.default,
   fontSize: theme.fontSizes.title,
   color: theme.colors.textOnPrimary,
 })
@@ -21,13 +36,13 @@ const StyledText = styled("div", {
   color: theme.colors.textOnSurface,
 })
 
-interface ParagraphProps {
+interface ParagraphProps extends React.ComponentProps<typeof StyledParagraph> {
   header: ReactNode
   text: ReactNode
 }
 
-export const Paragraph = ({ header, text }: ParagraphProps) => (
-  <StyledParagraph>
+export const Paragraph = ({ header, text, ...props }: ParagraphProps) => (
+  <StyledParagraph {...props}>
     <StyledHeader>{header}</StyledHeader>
     <StyledText>{text}</StyledText>
   </StyledParagraph>
