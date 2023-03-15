@@ -15,6 +15,16 @@ const StyledImg = styled("img", {
   height: "100%",
   objectFit: "cover",
   borderRadius: theme.radii.default,
+  transition: "transform 0.3s ease",
+  "&:hover": {
+    transform: "scale(1.1)",
+  },
+})
+
+const ImageContainer = styled("div", {
+  height: "100%",
+  overflow: "hidden",
+  borderRadius: theme.radii.default,
 })
 
 const StyledHeading = styled("h4", {
@@ -36,8 +46,10 @@ export const SandboxCard = ({
   ...props
 }: SandboxCardProps) => (
   <StyledCard {...props}>
-    <a href={link} target="_blank" rel="noreferrer" style={{ height: "100%" }}>
-      <StyledImg src={imgUrl} alt={name} />
+    <a href={link} target="_blank" rel="noreferrer">
+      <ImageContainer>
+        <StyledImg src={imgUrl} alt={name} />
+      </ImageContainer>
     </a>
     <StyledHeading>{name}</StyledHeading>
   </StyledCard>
