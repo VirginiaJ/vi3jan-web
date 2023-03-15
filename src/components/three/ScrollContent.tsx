@@ -5,9 +5,11 @@ import { useThree } from "@react-three/fiber"
 import { theme } from "src/designConfig"
 
 import { HtmlBlock } from "./HtmlBlock"
-import { Grid } from "../UI/Grid"
-import { Paper } from "../UI/Paper"
-import { Paragraph } from "../UI/Paragraph"
+import { Grid } from "../UI/basic/Grid"
+import { Header } from "../UI/basic/Header"
+import { Paper } from "../UI/basic/Paper"
+import { Paragraph } from "../UI/basic/Paragraph"
+import { Contacts } from "../UI/Contacts"
 import { SandboxCard } from "../UI/SandboxCard"
 
 export const ScrollContent = () => {
@@ -74,6 +76,7 @@ export const ScrollContent = () => {
         </HtmlBlock>
         <HtmlBlock center position={[0, -2 * viewport.height, 0]}>
           <Paper
+            alignContent="center"
             style={{
               width: `calc(${size.width}px - 8 * ${theme.space.large})`,
             }}
@@ -93,6 +96,19 @@ export const ScrollContent = () => {
                 />
               ))}
             </Grid>
+          </Paper>
+        </HtmlBlock>
+        <HtmlBlock
+          center
+          position={[viewport.width / 4, -viewport.height * 3, 0]}
+        >
+          <Paper
+            style={{
+              width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
+            }}
+          >
+            <Header text={"Get in touch"} />
+            <Contacts />
           </Paper>
         </HtmlBlock>
       </Scroll>

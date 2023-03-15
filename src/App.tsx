@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useState } from "react"
 
 import { MyCanvas } from "./components/Canvas"
-import { Button } from "./components/UI/Button"
-import { Icon } from "./components/UI/Icon"
+import { Button } from "./components/UI/basic/Button"
+import { Icon } from "./components/UI/basic/Icon"
 import { darkMode } from "./designConfig"
 
 type Themes = "light" | "dark"

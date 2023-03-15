@@ -1,4 +1,4 @@
-import { styled, theme } from "../../designConfig"
+import { styled, theme } from "src/designConfig"
 
 const StyledPaper = styled("div", {
   display: "flex",
@@ -10,6 +10,22 @@ const StyledPaper = styled("div", {
   borderRadius: theme.radii.default,
   backgroundColor: theme.colors.surfaceTransparent,
   color: theme.colors.textOnSurface,
+  variants: {
+    alignContent: {
+      left: {
+        alignItems: "flex-start",
+      },
+      center: {
+        alignItems: "center",
+      },
+      right: {
+        alignItems: "flex-end",
+      },
+    },
+  },
+  defaultVariants: {
+    alignContent: "left",
+  },
 })
 
 export const Paper = ({

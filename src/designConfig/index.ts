@@ -9,8 +9,8 @@ export const defaultMargin = 12
 const space = {
   small: "8px",
   default: `${defaultMargin}px`,
+  medium: "24px",
   large: "48px",
-  medium: "16px",
 }
 
 type SpaceValue = keyof typeof space
@@ -28,18 +28,20 @@ const stitches = createStitches({
     },
     fontSizes: {
       default: "14px",
-      title: "18px",
+      subtitle: "18px",
+      title: "36px",
     },
     lineHeights: {
       default: "16px",
-      title: "20px",
+      subtitle: "20px",
+      title: "38px",
     },
     space,
     radii: {
       large: "48px",
-      medium: "16px",
-      default: "8px",
-      small: "4px",
+      medium: "24px",
+      default: "12px",
+      small: "8px",
       circular: "9999px",
     },
     shadows: {

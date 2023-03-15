@@ -1,4 +1,4 @@
-import { styled, theme } from "../../designConfig"
+import { styled, theme } from "src/designConfig"
 
 const StyledCard = styled("div", {
   display: "grid",
@@ -19,7 +19,7 @@ const StyledImg = styled("img", {
 
 const StyledHeading = styled("h4", {
   margin: "0",
-  fontSize: theme.fontSizes.title,
+  fontSize: theme.fontSizes.subtitle,
   color: theme.colors.textOnPrimary,
 })
 
