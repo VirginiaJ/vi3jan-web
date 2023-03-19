@@ -44,26 +44,20 @@ export const ScrollContent = () => {
   return (
     <ScrollControls damping={0.2} pages={3} distance={0.5}>
       <Scroll>
-        <group position={[viewport.width / 4, 0, 0]}>
-          <HtmlBlock center>
-            <Paper
-              style={{
-                width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
-              }}
-            >
-              <Paragraph
-                header={"Hello!"}
-                text={
-                  "I'm Virginia Januškaitė, a front-end and 3D web developer aiming to unchain websites from 2D chains. I like to work on projects that are unique and showcase new types of digital interactions."
-                }
-              />
-            </Paper>
-          </HtmlBlock>
-          {/* <mesh position={[-3, 1, 0.15]} castShadow>
-            <sphereGeometry args={[0.3, 20]} />
-            <meshPhongMaterial color="red" />
-          </mesh> */}
-        </group>
+        <HtmlBlock center position={[viewport.width / 4, 0, 0]}>
+          <Paper
+            style={{
+              width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
+            }}
+          >
+            <Paragraph
+              header={"Hello!"}
+              text={
+                "I'm Virginia Januškaitė, a front-end and 3D web developer aiming to unchain websites from 2D chains. I like to work on projects that are unique and showcase new types of digital interactions."
+              }
+            />
+          </Paper>
+        </HtmlBlock>
         <HtmlBlock
           center
           position={[-viewport.width / 4, (-2 * viewport.height) / 3, 0]}

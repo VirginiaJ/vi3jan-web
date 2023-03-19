@@ -4,11 +4,13 @@ import {
   RandomizedLight,
 } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
+import { Bloom, EffectComposer } from "@react-three/postprocessing"
 import { useThemeContext } from "src/App"
 import { coreColors } from "src/designConfig/coreColors"
 
 import { Ground } from "./three/Ground"
 import { ScrollContent } from "./three/ScrollContent"
+import { Torch } from "./three/Torch"
 
 export const MyCanvas = () => {
   const { theme } = useThemeContext()
@@ -34,7 +36,7 @@ export const MyCanvas = () => {
         args={[theme === "dark" ? "#000" : coreColors.gray50, 0, 30]}
       />
       <ScrollContent />
-      {/* <Torch /> */}
+      <Torch />
       <mesh castShadow receiveShadow position={[-2, -1, -3]}>
         <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial color="pink" metalness={1} roughness={0.4} />
@@ -65,6 +67,11 @@ export const MyCanvas = () => {
 
       <Ground position={[0, -2, 0]} />
 
+      <mesh position={[-4, -1.5, 0]} castShadow>
+        <ringGeometry args={[0.2, 0.3, 40]} />
+        <meshBasicMaterial color={coreColors.purple300} toneMapped={false} />
+      </mesh>
+
       <AccumulativeShadows
         frames={100}
         alphaTest={0.8}
@@ -86,21 +93,11 @@ export const MyCanvas = () => {
         intensity={1}
         color="hotpink"
       />
-
-      {/* <EffectComposer multisampling={8}>
-        <Bloom
-          kernelSize={1}
-          luminanceThreshold={0.2}
-          luminanceSmoothing={0.3}
-          intensity={0.4}
-        />
-        <Bloom
-          kernelSize={KernelSize.HUGE}
-          luminanceThreshold={0}
-          luminanceSmoothing={0}
-          intensity={0.5}
-        />
-      </EffectComposer> */}
+      {theme === "dark" && (
+        <EffectComposer>
+          <Bloom luminanceThreshold={0.1} mipmapBlur intensity={1.5} />
+        </EffectComposer>
+      )}
       <Environment preset="city" />
       <ambientLight intensity={theme === "dark" ? 0.01 : 1} />
       {/* <OrbitControls /> */}
