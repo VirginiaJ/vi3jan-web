@@ -22,6 +22,7 @@ const StyledImg = styled("img", {
 })
 
 const ImageContainer = styled("div", {
+  cursor: "pointer",
   height: "100%",
   overflow: "hidden",
   borderRadius: theme.radii.default,

@@ -27,14 +27,14 @@ const stitches = createStitches({
       ...lightThemeColors,
     },
     fontSizes: {
-      default: "14px",
-      subtitle: "18px",
-      title: "36px",
+      default: "24px",
+      subtitle: "36px",
+      title: "48px",
     },
     lineHeights: {
-      default: "16px",
-      subtitle: "20px",
-      title: "38px",
+      default: "30px",
+      subtitle: "42px",
+      title: "54px",
     },
     space,
     radii: {

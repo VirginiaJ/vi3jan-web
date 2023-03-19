@@ -52,25 +52,32 @@ export const ScrollContent = () => {
               }}
             >
               <Paragraph
-                header={"Header"}
-                text={"paragraph text text text text text text text text"}
+                header={"Hello!"}
+                text={
+                  "I'm Virginia Januškaitė, a front-end and 3D web developer aiming to unchain websites from 2D chains. I like to work on projects that are unique and showcase new types of digital interactions."
+                }
               />
             </Paper>
           </HtmlBlock>
-          <mesh position={[-3, 1, 0.15]} castShadow>
+          {/* <mesh position={[-3, 1, 0.15]} castShadow>
             <sphereGeometry args={[0.3, 20]} />
             <meshPhongMaterial color="red" />
-          </mesh>
+          </mesh> */}
         </group>
-        <HtmlBlock center position={[-viewport.width / 4, -viewport.height, 0]}>
+        <HtmlBlock
+          center
+          position={[-viewport.width / 4, (-2 * viewport.height) / 3, 0]}
+        >
           <Paper
             style={{
               width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
             }}
           >
             <Paragraph
-              header={"Header2"}
-              text={"paragraph text text text text text text text text"}
+              header={"Experience"}
+              text={
+                "Started coding in 2019, professionally working since 2020."
+              }
             />
           </Paper>
         </HtmlBlock>

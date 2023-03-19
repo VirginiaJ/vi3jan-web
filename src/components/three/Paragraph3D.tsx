@@ -16,7 +16,7 @@ export const Paragraph3D = () => (
         attach="material"
         color={theme === "dark" ? coreColors.purple700 : coreColors.purple300}
       />
-      paragraph text text text text text text text text
+      paragraph
     </Text>
   </>
 )
