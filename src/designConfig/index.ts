@@ -4,9 +4,14 @@ import { coreColors } from "./coreColors"
 import { darkThemeColors } from "./darkThemeColors"
 import { lightThemeColors } from "./lightThemeColors"
 
-export const defaultMargin = 8
+export const defaultMargin = 12
 
-const space = { small: "4px", default: `${defaultMargin}px`, large: "16px" }
+const space = {
+  small: "8px",
+  default: `${defaultMargin}px`,
+  medium: "24px",
+  large: "48px",
+}
 
 type SpaceValue = keyof typeof space
 
@@ -22,15 +27,23 @@ const stitches = createStitches({
       ...lightThemeColors,
     },
     fontSizes: {
-      default: "12px",
-      title: "18px",
+      default: "24px",
+      subtitle: "36px",
+      title: "48px",
     },
     lineHeights: {
-      default: "16px",
-      title: "20px",
+      default: "30px",
+      subtitle: "42px",
+      title: "54px",
     },
     space,
-    radii: { large: "16px", default: "8px", small: "4px", circular: "9999px" },
+    radii: {
+      large: "48px",
+      medium: "24px",
+      default: "12px",
+      small: "8px",
+      circular: "9999px",
+    },
     shadows: {
       default: "0px 2px 4px rgba(0, 0, 0, 0.16)",
     },

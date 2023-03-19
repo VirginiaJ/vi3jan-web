@@ -1,6 +1,6 @@
 export const coreColors = {
   black: "#0f0f0f",
-  white: "#f9f9f9",
+  white: "#f0f0f0",
   blue50: "#f3f8fe",
   blue100: "#e0edfe",
   blue150: "#cce2fd",

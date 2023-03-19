@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useState } from "react"
 
 import { MyCanvas } from "./components/Canvas"
-import { Button } from "./components/UI/Button"
-import { Icon } from "./components/UI/Icon"
+import { Button } from "./components/UI/basic/Button"
+import { Icon } from "./components/UI/basic/Icon"
 import { darkMode } from "./designConfig"
 
 type Themes = "light" | "dark"
@@ -22,13 +22,14 @@ function App() {
   return (
     <themeContext.Provider value={{ theme: currentTheme }}>
       <div
+        id="app"
         style={{ height: "100vh" }}
         className={currentTheme === "dark" ? darkMode : ""}
       >
         <MyCanvas />
         <Button
           iconButton
-          style={{ position: "absolute", top: 0, right: 0, margin: "10px" }}
+          style={{ position: "absolute", top: 0, left: 0, margin: "10px" }}
           onClick={switchTheme}
         >
           <Icon iconName="moon" size="large" />
