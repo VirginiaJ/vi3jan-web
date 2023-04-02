@@ -4,8 +4,8 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing"
 import { useThemeContext } from "src/App"
 import { coreColors } from "src/designConfig/coreColors"
 
+import { Composition } from "./three/Composition"
 import { Ground } from "./three/Ground"
-import { ScrollContent } from "./three/ScrollContent"
 import { Torch } from "./three/Torch"
 
 export const MyCanvas = () => {
@@ -31,7 +31,7 @@ export const MyCanvas = () => {
         attach="fog"
         args={[theme === "dark" ? "#000" : coreColors.gray50, 0, 30]}
       />
-      <ScrollContent />
+      <Composition />
       <Torch />
 
       {/* <AccumulativeShadows

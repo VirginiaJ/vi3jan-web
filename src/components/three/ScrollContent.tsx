@@ -5,7 +5,6 @@ import { useThree } from "@react-three/fiber"
 import { theme } from "src/designConfig"
 import { useLayout } from "src/hooks/useLayout"
 
-import { Composition } from "./Composition"
 import { HtmlBlock } from "./HtmlBlock"
 import { Grid } from "../UI/basic/Grid"
 import { Header } from "../UI/basic/Header"
@@ -109,7 +108,6 @@ export const ScrollContent = () => {
             <Contacts />
           </Paper>
         </HtmlBlock>
-        <Composition />
       </Scroll>
       <Preload />
     </ScrollControls>
