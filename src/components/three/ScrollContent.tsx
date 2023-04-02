@@ -3,7 +3,9 @@ import { useMemo } from "react"
 import { Preload, Scroll, ScrollControls } from "@react-three/drei"
 import { useThree } from "@react-three/fiber"
 import { theme } from "src/designConfig"
+import { useLayout } from "src/hooks/useLayout"
 
+import { Composition } from "./Composition"
 import { HtmlBlock } from "./HtmlBlock"
 import { Grid } from "../UI/basic/Grid"
 import { Header } from "../UI/basic/Header"
@@ -14,11 +16,7 @@ import { SandboxCard } from "../UI/SandboxCard"
 
 export const ScrollContent = () => {
   const { viewport, size } = useThree()
-  const mobile = size.width < 767
-  const blockWidth = mobile ? size.width : size.width / 2
-  const marginTimes = mobile ? 1.4 : 8
-  const left = !mobile ? -viewport.width / 4 : 0
-  const right = !mobile ? viewport.width / 4 : 0
+  const { blockWidth, marginTimes, left, right } = useLayout()
 
   const sandboxData = useMemo(
     () => [
@@ -111,6 +109,7 @@ export const ScrollContent = () => {
             <Contacts />
           </Paper>
         </HtmlBlock>
+        <Composition />
       </Scroll>
       <Preload />
     </ScrollControls>

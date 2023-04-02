@@ -1,8 +1,4 @@
-import {
-  AccumulativeShadows,
-  Environment,
-  RandomizedLight,
-} from "@react-three/drei"
+import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Bloom, EffectComposer } from "@react-three/postprocessing"
 import { useThemeContext } from "src/App"
@@ -37,42 +33,8 @@ export const MyCanvas = () => {
       />
       <ScrollContent />
       <Torch />
-      <mesh castShadow receiveShadow position={[-2, -1, -3]}>
-        <sphereGeometry args={[1, 64, 64]} />
-        <meshStandardMaterial color="pink" metalness={1} roughness={0.4} />
-      </mesh>
-      {/* <Caustics
-        color="#FF8F20"
-        position={[-3, -1.99, -2]}
-        lightSource={[-10, 10, 5]}
-        worldRadius={0.003}
-        ior={1.16}
-        intensity={0.004}
-        causticsOnly={false}
-        backside={false}
-      >
-        <mesh castShadow receiveShadow position={[-3, 1, -2]}>
-          <sphereGeometry args={[1, 64, 64]} />
-          <MeshTransmissionMaterial
-            resolution={1024}
-            distortion={0.25}
-            color="#FF8F20"
-            thickness={1}
-            anisotropy={1}
-            distortionScale={0.5}
-            temporalDistortion={0}
-          />
-        </mesh>
-      </Caustics> */}
 
-      <Ground position={[0, -2, 0]} />
-
-      <mesh position={[-4, -1.5, 0]} castShadow>
-        <ringGeometry args={[0.2, 0.3, 40]} />
-        <meshBasicMaterial color={coreColors.purple300} toneMapped={false} />
-      </mesh>
-
-      <AccumulativeShadows
+      {/* <AccumulativeShadows
         frames={100}
         alphaTest={0.8}
         scale={50}
@@ -85,10 +47,10 @@ export const MyCanvas = () => {
           intensity={1}
           position={[-10, 10, 5]}
         />
-      </AccumulativeShadows>
+      </AccumulativeShadows> */}
       <spotLight
+        castShadow
         position={[-10, 10, 5]}
-        angle={0.12}
         penumbra={1}
         intensity={1}
         color="hotpink"
@@ -100,7 +62,7 @@ export const MyCanvas = () => {
       )}
       <Environment preset="city" />
       <ambientLight intensity={theme === "dark" ? 0.01 : 1} />
-      {/* <OrbitControls /> */}
+      <Ground position={[0, -2, 0]} />
     </Canvas>
   )
 }

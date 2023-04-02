@@ -8,7 +8,7 @@ export const Ground = ({ position }: MeshProps) => {
 
   return (
     <group position={position} rotation-x={-Math.PI / 2}>
-      <mesh>
+      <mesh receiveShadow>
         <planeGeometry args={[50, 50]} />
         <MeshReflectorMaterial
           resolution={2048}
