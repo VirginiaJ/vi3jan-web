@@ -30,8 +30,11 @@ const ImageContainer = styled("div", {
 
 const StyledHeading = styled("h4", {
   margin: "0",
-  fontSize: theme.fontSizes.subtitle,
+  fontSize: theme.fontSizes.subtitleLg,
   color: theme.colors.textOnPrimary,
+  "@mobile": {
+    fontSize: theme.fontSizes.subtitleSm,
+  },
 })
 
 interface SandboxCardProps extends React.ComponentProps<typeof StyledCard> {
@@ -47,7 +50,7 @@ export const SandboxCard = ({
   ...props
 }: SandboxCardProps) => (
   <StyledCard {...props}>
-    <a href={link} target="_blank" rel="noreferrer">
+    <a href={link} target="_blank" rel="noreferrer" style={{ height: "100%" }}>
       <ImageContainer>
         <StyledImg src={imgUrl} alt={name} />
       </ImageContainer>

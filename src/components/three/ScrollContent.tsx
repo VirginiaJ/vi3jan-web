@@ -14,6 +14,11 @@ import { SandboxCard } from "../UI/SandboxCard"
 
 export const ScrollContent = () => {
   const { viewport, size } = useThree()
+  const mobile = size.width < 767
+  const blockWidth = mobile ? size.width : size.width / 2
+  const marginTimes = mobile ? 1.4 : 8
+  const left = !mobile ? -viewport.width / 4 : 0
+  const right = !mobile ? viewport.width / 4 : 0
 
   const sandboxData = useMemo(
     () => [
@@ -24,7 +29,7 @@ export const ScrollContent = () => {
       },
       {
         imgUrl: "/images/space-odyssey.png",
-        name: "Space odyssey: various three.js techniques",
+        name: "Space odyssey",
         link: "https://codesandbox.io/s/space-odyssey-gm7xwc",
       },
       {
@@ -44,10 +49,10 @@ export const ScrollContent = () => {
   return (
     <ScrollControls damping={0.2} pages={3} distance={0.5}>
       <Scroll>
-        <HtmlBlock center position={[viewport.width / 4, 0, 0]}>
+        <HtmlBlock center position={[right, 0, 0]}>
           <Paper
             style={{
-              width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
+              width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,
             }}
           >
             <Paragraph
@@ -58,13 +63,10 @@ export const ScrollContent = () => {
             />
           </Paper>
         </HtmlBlock>
-        <HtmlBlock
-          center
-          position={[-viewport.width / 4, (-2 * viewport.height) / 3, 0]}
-        >
+        <HtmlBlock center position={[left, (-2 * viewport.height) / 3, 0]}>
           <Paper
             style={{
-              width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
+              width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,
             }}
           >
             <Paragraph
@@ -79,7 +81,7 @@ export const ScrollContent = () => {
           <Paper
             alignContent="center"
             style={{
-              width: `calc(${size.width}px - 8 * ${theme.space.large})`,
+              width: `calc(${size.width}px - ${marginTimes} * ${theme.space.large})`,
             }}
           >
             <Paragraph
@@ -99,13 +101,10 @@ export const ScrollContent = () => {
             </Grid>
           </Paper>
         </HtmlBlock>
-        <HtmlBlock
-          center
-          position={[viewport.width / 4, -viewport.height * 3, 0]}
-        >
+        <HtmlBlock center position={[right, -viewport.height * 3, 0]}>
           <Paper
             style={{
-              width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
+              width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,
             }}
           >
             <Header text={"Get in touch"} />

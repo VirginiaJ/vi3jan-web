@@ -7,6 +7,10 @@ const StyledGrid = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   gap: theme.space.medium,
+  "@mobile": {
+    gridTemplateColumns: "1fr",
+    gridTemplateRows: "1fr",
+  },
 })
 
 export const Grid = ({
