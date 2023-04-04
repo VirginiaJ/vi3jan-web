@@ -17,11 +17,7 @@
     "three-stdlib": "^2.21.8",
     "zustand": "^4.3.3",
     "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@types/three": "^0.149.0",
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
-    "typescript": "^4.9.5"
+    "@types/react-dom": "^18.0.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,6 +26,10 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@types/three": "^0.149.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "typescript": "^4.9.5",
     "eslint": "^8.33.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prefer-arrow": "^1.2.3",
