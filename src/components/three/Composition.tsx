@@ -1,11 +1,16 @@
 import { useCallback, useEffect, useRef } from "react"
 
+import { useFrame } from "@react-three/fiber"
 import { useLayout } from "src/hooks/useLayout"
-import { Group } from "three"
+import { Group, Object3D, Quaternion } from "three"
 
+import { Model } from "./Model"
 import { ObjectGroup } from "./ObjectGroup"
 import { Ring } from "./Ring"
 import { ScrollContent } from "./ScrollContent"
+
+const obj = new Object3D()
+const quat = new Quaternion(0, Math.PI / 2, 0)
 
 export const Composition = () => {
   const { left, right } = useLayout()
@@ -13,7 +18,13 @@ export const Composition = () => {
 
   const onWheel = useCallback((e: any) => {
     const pageY = e.pageY
-    if (objectGroupRef.current) objectGroupRef.current.rotation.y += 0.1
+    if (objectGroupRef.current) {
+      obj.rotation.copy(objectGroupRef.current.rotation)
+
+      if (!objectGroupRef.current.quaternion.equals(quat)) {
+        objectGroupRef.current.quaternion.rotateTowards(quat, 0.01)
+      }
+    }
   }, [])
 
   useEffect(() => {
@@ -22,6 +33,12 @@ export const Composition = () => {
       document.removeEventListener("mousewheel", onWheel)
     }
   }, [onWheel])
+
+  useFrame(() => {
+    if (!objectGroupRef.current?.quaternion.equals(quat)) {
+      objectGroupRef.current?.quaternion.rotateTowards(quat, 0.01)
+    }
+  })
 
   return (
     <>
@@ -32,10 +49,7 @@ export const Composition = () => {
         <Ring position={[-1.8, -1, 5]} />
         <Ring position={[-1, 1.2, -3]} />
       </ObjectGroup>
-      <mesh castShadow receiveShadow position={[-2, -1, -5]}>
-        <sphereGeometry args={[1, 64, 64]} />
-        <meshStandardMaterial color="pink" metalness={1} roughness={0.4} />
-      </mesh>
+      <Model position={[-2, -1.99, 0]} />
       <ScrollContent />
     </>
   )
