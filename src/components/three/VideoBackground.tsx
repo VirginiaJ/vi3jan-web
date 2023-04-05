@@ -17,7 +17,7 @@ export const VideoBackground = () => {
   useEffect(() => void video.play(), [video])
 
   return (
-    <mesh scale={scale} position={[0, 0, -7]}>
+    <mesh scale={scale} position={[0, 5.26, -6.5]}>
       <planeGeometry />
       <meshBasicMaterial toneMapped={true}>
         <videoTexture attach="map" args={[video]} encoding={sRGBEncoding} />

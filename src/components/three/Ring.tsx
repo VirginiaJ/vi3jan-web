@@ -1,31 +1,19 @@
-import { useRef } from "react"
-
-import { MeshProps } from "@react-three/fiber"
+import { MeshProps, useThree } from "@react-three/fiber"
+import { useThemeContext } from "src/App"
 import { coreColors } from "src/designConfig/coreColors"
-import { Mesh } from "three"
 
-export const Ring = ({ position, ...props }: MeshProps) => {
-  const ref = useRef<Mesh>(null)
-
-  // useFrame((state) => {
-  //   const t = state.clock.getElapsedTime() * 0.3
-  //   const pos = position as Vector3Tuple
-  //   ref.current?.rotation.set(
-  //     pos[0] * Math.cos(t),
-  //     pos[1] * Math.sin(t),
-  //     pos[2] * Math.cos(t)
-  //   )
-  //   if (ref.current) {
-  //     ref.current.position.x = pos[0] + Math.cos(t) * 0.3
-  //     ref.current.position.y = Math.sin(t) * pos[1]
-  //     ref.current.position.z = Math.cos(t) * pos[2]
-  //   }
-  // })
+export const Ring = (props: MeshProps) => {
+  const { theme } = useThemeContext()
+  const { viewport } = useThree()
+  const diam = viewport.width / 2
 
   return (
-    <mesh ref={ref} {...props} position={position} scale={Math.random() + 0.5}>
-      <torusGeometry args={[0.3, 0.1, 40]} />
-      <meshPhongMaterial color={coreColors.purple300} toneMapped={false} />
+    <mesh {...props}>
+      <ringGeometry args={[diam - 0.1, diam, 100]} />
+      <meshPhongMaterial
+        toneMapped={false}
+        color={theme === "dark" ? coreColors.purple300 : coreColors.purple400}
+      />
     </mesh>
   )
 }

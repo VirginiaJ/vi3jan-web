@@ -60,7 +60,7 @@ export const ScrollContent = () => {
             />
           </Paper>
         </HtmlBlock>
-        <HtmlBlock center position={[left, (-2 * viewport.height) / 3, 0]}>
+        <HtmlBlock center position={[left, -viewport.height, 0]}>
           <Paper
             style={{
               width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,
@@ -74,7 +74,7 @@ export const ScrollContent = () => {
             />
           </Paper>
         </HtmlBlock>
-        <HtmlBlock center position={[0, -2 * viewport.height, 0]}>
+        <HtmlBlock center position={[0, -4 * viewport.height, 0]}>
           <Paper
             alignContent="center"
             style={{
@@ -98,7 +98,7 @@ export const ScrollContent = () => {
             </Grid>
           </Paper>
         </HtmlBlock>
-        <HtmlBlock center position={[right, -viewport.height * 3, 0]}>
+        <HtmlBlock center position={[right, -8 * viewport.height, 0]}>
           <Paper
             style={{
               width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,

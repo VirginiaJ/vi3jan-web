@@ -19,12 +19,7 @@ export const Model = ({ position, rotation, scale }: MeshProps) => {
       rotation={rotation}
       scale={scale}
     >
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.dragon.geometry}
-        dispose={null}
-      >
+      <mesh castShadow geometry={nodes.dragon.geometry} dispose={null}>
         <MeshTransmissionMaterial
           color="hotpink"
           resolution={128}

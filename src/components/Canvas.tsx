@@ -23,14 +23,16 @@ export const MyCanvas = () => {
         far: 100,
         fov: 45,
       }}
+      performance={{ min: 0.1 }}
+      gl={{ antialias: false }}
     >
       <color
         attach="background"
-        args={[theme === "dark" ? "#000" : coreColors.gray50]}
+        args={[theme === "dark" ? "#000" : coreColors.blue50]}
       />
       <fog
         attach="fog"
-        args={[theme === "dark" ? "#000" : coreColors.gray50, 15, 30]}
+        args={[theme === "dark" ? "#000" : coreColors.blue50, 15, 30]}
       />
 
       <Composition />
