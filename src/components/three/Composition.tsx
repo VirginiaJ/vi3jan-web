@@ -1,43 +1,31 @@
-import { useCallback, useEffect, useRef } from "react"
+import { useMemo, useRef } from "react"
 
 import { useFrame } from "@react-three/fiber"
 import { useLayout } from "src/hooks/useLayout"
-import { Group, Object3D, Quaternion } from "three"
+import { Group, Vector3 } from "three"
 
 import { Model } from "./Model"
 import { ObjectGroup } from "./ObjectGroup"
 import { ScrollContent } from "./ScrollContent"
 import { Tube } from "./Tube"
 
-const obj = new Object3D()
-const quat = new Quaternion(0, Math.PI / 2, 0)
+const vec = new Vector3()
 
 export const Composition = () => {
   const { left, right } = useLayout()
   const objectGroupRef = useRef<Group>(null)
 
-  const onWheel = useCallback((e: any) => {
-    const pageY = e.pageY
-    if (objectGroupRef.current) {
-      obj.rotation.copy(objectGroupRef.current.rotation)
+  const tubePositions = useMemo(
+    () => [-12, -10.5, -9, -7.5, -6, -4.5, -3, -1.5, 0, 1.5, 3],
+    []
+  )
 
-      if (!objectGroupRef.current.quaternion.equals(quat)) {
-        objectGroupRef.current.quaternion.rotateTowards(quat, 0.01)
-      }
-    }
-  }, [])
-
-  useEffect(() => {
-    document.addEventListener("mousewheel", onWheel)
-    return () => {
-      document.removeEventListener("mousewheel", onWheel)
-    }
-  }, [onWheel])
-
-  useFrame(() => {
-    if (!objectGroupRef.current?.quaternion.equals(quat)) {
-      objectGroupRef.current?.quaternion.rotateTowards(quat, 0.01)
-    }
+  useFrame((state) => {
+    state.camera.position.lerp(
+      vec.set(state.mouse.x * 5, 3 + state.mouse.y * 2, 10),
+      0.05
+    )
+    state.camera.lookAt(0, 0, 0)
   })
 
   return (
@@ -49,19 +37,21 @@ export const Composition = () => {
         <Ring position={[-1.8, -1, 5]} />
         <Ring position={[-1, 1.2, -3]} /> */}
       </ObjectGroup>
-      <ObjectGroup position={[0, 0, 0]} rotation={[0, 0.15, 0]}>
-        <Tube position={[right, -2, -3]} rotation={[0, 0, Math.PI / 4]} />
-        <Tube position={[2 * left, -2, -3]} rotation={[0, 0, -Math.PI / 4]} />
-        <Tube position={[right, -2, -1.5]} rotation={[0, 0, Math.PI / 4]} />
-        <Tube position={[2 * left, -2, -1.5]} rotation={[0, 0, -Math.PI / 4]} />
-        <Tube position={[right, -2, 0]} rotation={[0, 0, Math.PI / 4]} />
-        <Tube position={[2 * left, -2, 0]} rotation={[0, 0, -Math.PI / 4]} />
-        <Tube position={[right, -2, 1.5]} rotation={[0, 0, Math.PI / 4]} />
-        <Tube position={[2 * left, -2, 1.5]} rotation={[0, 0, -Math.PI / 4]} />
-        <Tube position={[right, -2, 3]} rotation={[0, 0, Math.PI / 4]} />
-        <Tube position={[2 * left, -2, 3]} rotation={[0, 0, -Math.PI / 4]} />
+      <ObjectGroup position={[0, 0, 0]}>
+        {tubePositions.map((pos) => (
+          <group key={`tubes${pos}`}>
+            <Tube
+              position={[2 * left, -2, pos]}
+              rotation={[0, 0, -Math.PI / 4]}
+            />
+            <Tube
+              position={[2 * right, -2, pos]}
+              rotation={[0, 0, Math.PI / 4]}
+            />
+          </group>
+        ))}
       </ObjectGroup>
-      <Model position={[left / 2, -1.99, 0]} />
+      <Model position={[0, -1.99, 0]} scale={1.5} />
       <ScrollContent />
     </>
   )

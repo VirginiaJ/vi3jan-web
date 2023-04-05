@@ -21,7 +21,7 @@ export const Ground = ({ position }: MeshProps) => {
           maxDepthThreshold={1}
           metalness={0.6}
           roughness={theme === "dark" ? 1 : 0.7}
-          color={theme === "dark" ? coreColors.black : coreColors.gray50}
+          color={theme === "dark" ? coreColors.black : coreColors.gray150}
         />
       </mesh>
     </group>

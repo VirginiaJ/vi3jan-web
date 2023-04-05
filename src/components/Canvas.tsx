@@ -7,6 +7,7 @@ import { coreColors } from "src/designConfig/coreColors"
 import { Composition } from "./three/Composition"
 import { Ground } from "./three/Ground"
 import { Torch } from "./three/Torch"
+import { VideoBackground } from "./three/VideoBackground"
 
 export const MyCanvas = () => {
   const { theme } = useThemeContext()
@@ -17,7 +18,7 @@ export const MyCanvas = () => {
       id="canvas"
       dpr={[1, 1.5]}
       camera={{
-        position: [0, 0, 10],
+        position: [0, 0.7, 10],
         near: 0.01,
         far: 100,
         fov: 45,
@@ -29,40 +30,46 @@ export const MyCanvas = () => {
       />
       <fog
         attach="fog"
-        args={[theme === "dark" ? "#000" : coreColors.gray50, 0, 30]}
+        args={[theme === "dark" ? "#000" : coreColors.gray50, 15, 30]}
       />
+
       <Composition />
       <Torch />
 
-      {/* <AccumulativeShadows
-        frames={100}
-        alphaTest={0.8}
-        scale={50}
-        position={[0, -2, 0]}
-      >
-        <RandomizedLight
-          amount={8}
-          radius={4}
-          ambient={0.5}
-          intensity={1}
-          position={[-10, 10, 5]}
-        />
-      </AccumulativeShadows> */}
       <spotLight
         castShadow
-        position={[-10, 10, 5]}
+        position={[0, 2, -6]}
         penumbra={1}
         intensity={1}
-        color="hotpink"
+        color={coreColors.blue600}
       />
-      {theme === "dark" && (
-        <EffectComposer>
+      <spotLight
+        castShadow
+        position={[5, 2, -10]}
+        penumbra={1}
+        intensity={1}
+        color={coreColors.blue600}
+      />
+      <spotLight
+        castShadow
+        position={[-5, 2, -10]}
+        penumbra={1}
+        intensity={1}
+        color={coreColors.blue600}
+      />
+
+      <EffectComposer>
+        {theme === "dark" ? (
           <Bloom luminanceThreshold={0.1} mipmapBlur intensity={1.5} />
-        </EffectComposer>
-      )}
+        ) : (
+          <></>
+        )}
+      </EffectComposer>
+
       <Environment preset="city" />
       <ambientLight intensity={theme === "dark" ? 0.01 : 1} />
       <Ground position={[0, -2, 0]} />
+      <VideoBackground />
     </Canvas>
   )
 }
