@@ -1,4 +1,3 @@
-import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Bloom, EffectComposer } from "@react-three/postprocessing"
 import { useThemeContext } from "src/App"
@@ -6,8 +5,6 @@ import { coreColors } from "src/designConfig/coreColors"
 
 import { Composition } from "./three/Composition"
 import { Ground } from "./three/Ground"
-import { Torch } from "./three/Torch"
-import { VideoBackground } from "./three/VideoBackground"
 
 export const MyCanvas = () => {
   const { theme } = useThemeContext()
@@ -28,37 +25,15 @@ export const MyCanvas = () => {
     >
       <color
         attach="background"
-        args={[theme === "dark" ? "#000" : coreColors.blue50]}
+        args={[theme === "dark" ? "#000" : coreColors.gray150]}
       />
       <fog
         attach="fog"
-        args={[theme === "dark" ? "#000" : coreColors.blue50, 15, 30]}
+        args={[theme === "dark" ? "#000" : coreColors.gray150, 15, 30]}
       />
 
       <Composition />
-      <Torch />
-
-      <spotLight
-        castShadow
-        position={[0, 2, -6]}
-        penumbra={1}
-        intensity={1}
-        color={coreColors.blue600}
-      />
-      <spotLight
-        castShadow
-        position={[5, 2, -10]}
-        penumbra={1}
-        intensity={1}
-        color={coreColors.blue600}
-      />
-      <spotLight
-        castShadow
-        position={[-5, 2, -10]}
-        penumbra={1}
-        intensity={1}
-        color={coreColors.blue600}
-      />
+      {/* <Torch /> */}
 
       <EffectComposer>
         {theme === "dark" ? (
@@ -68,10 +43,8 @@ export const MyCanvas = () => {
         )}
       </EffectComposer>
 
-      <Environment preset="city" />
-      <ambientLight intensity={theme === "dark" ? 0.01 : 1} />
+      <ambientLight intensity={theme === "dark" ? 0.01 : 1.5} />
       <Ground position={[0, -2, 0]} />
-      <VideoBackground />
     </Canvas>
   )
 }

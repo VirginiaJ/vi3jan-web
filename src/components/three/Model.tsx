@@ -1,4 +1,4 @@
-import { Caustics, MeshTransmissionMaterial, useGLTF } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei"
 import { MeshProps } from "@react-three/fiber"
 
 export const Model = ({ position, rotation, scale }: MeshProps) => {
@@ -7,30 +7,16 @@ export const Model = ({ position, rotation, scale }: MeshProps) => {
   ) as any
 
   return (
-    <Caustics
-      color="hotpink"
-      lightSource={[0, 3, -6]}
-      worldRadius={0.25}
-      ior={1.2}
-      intensity={0.05}
-      causticsOnly={false}
-      backside={false}
+    <mesh
+      castShadow
+      geometry={nodes.dragon.geometry}
+      dispose={null}
       position={position}
       rotation={rotation}
       scale={scale}
     >
-      <mesh castShadow geometry={nodes.dragon.geometry} dispose={null}>
-        <MeshTransmissionMaterial
-          color="hotpink"
-          resolution={128}
-          thickness={0.5}
-          anisotropy={2}
-          temporalDistortion={0.1}
-          distortion={10}
-          distortionScale={1}
-        />
-      </mesh>
-    </Caustics>
+      <meshStandardMaterial color="hotpink" roughness={0.3} metalness={0.95} />
+    </mesh>
   )
 }
 
