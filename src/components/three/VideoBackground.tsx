@@ -28,8 +28,8 @@ export const VideoBackground = ({
 
   const { aspectWidth, aspectHeight } = useMemo(
     () => ({
-      aspectWidth: width / width > height ? height : width,
-      aspectHeight: height / width > height ? height : width,
+      aspectWidth: width / (width > height ? height : width),
+      aspectHeight: height / (width > height ? height : width),
     }),
     [width, height]
   )
