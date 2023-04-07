@@ -3,6 +3,7 @@ import { useMemo } from "react"
 import { Preload, Scroll, ScrollControls } from "@react-three/drei"
 import { useThree } from "@react-three/fiber"
 import { theme } from "src/designConfig"
+import { useLayout } from "src/hooks/useLayout"
 
 import { HtmlBlock } from "./HtmlBlock"
 import { Grid } from "../UI/basic/Grid"
@@ -14,6 +15,7 @@ import { SandboxCard } from "../UI/SandboxCard"
 
 export const ScrollContent = () => {
   const { viewport, size } = useThree()
+  const { blockWidth, marginTimes, left, right } = useLayout()
 
   const sandboxData = useMemo(
     () => [
@@ -24,7 +26,7 @@ export const ScrollContent = () => {
       },
       {
         imgUrl: "/images/space-odyssey.png",
-        name: "Space odyssey: various three.js techniques",
+        name: "Space odyssey",
         link: "https://codesandbox.io/s/space-odyssey-gm7xwc",
       },
       {
@@ -44,33 +46,24 @@ export const ScrollContent = () => {
   return (
     <ScrollControls damping={0.2} pages={3} distance={0.5}>
       <Scroll>
-        <group position={[viewport.width / 4, 0, 0]}>
-          <HtmlBlock center>
-            <Paper
-              style={{
-                width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
-              }}
-            >
-              <Paragraph
-                header={"Hello!"}
-                text={
-                  "I'm Virginia Januškaitė, a front-end and 3D web developer aiming to unchain websites from 2D chains. I like to work on projects that are unique and showcase new types of digital interactions."
-                }
-              />
-            </Paper>
-          </HtmlBlock>
-          {/* <mesh position={[-3, 1, 0.15]} castShadow>
-            <sphereGeometry args={[0.3, 20]} />
-            <meshPhongMaterial color="red" />
-          </mesh> */}
-        </group>
-        <HtmlBlock
-          center
-          position={[-viewport.width / 4, (-2 * viewport.height) / 3, 0]}
-        >
+        <HtmlBlock center position={[right, 0, 0]}>
           <Paper
             style={{
-              width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
+              width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,
+            }}
+          >
+            <Paragraph
+              header={"Hello!"}
+              text={
+                "I'm Virginia Januškaitė, a front-end and 3D web developer aiming to unchain websites from 2D chains. I like to work on projects that are unique and showcase new types of digital interactions."
+              }
+            />
+          </Paper>
+        </HtmlBlock>
+        <HtmlBlock center position={[left, -viewport.height, 0]}>
+          <Paper
+            style={{
+              width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,
             }}
           >
             <Paragraph
@@ -81,11 +74,11 @@ export const ScrollContent = () => {
             />
           </Paper>
         </HtmlBlock>
-        <HtmlBlock center position={[0, -2 * viewport.height, 0]}>
+        <HtmlBlock center position={[0, -4 * viewport.height, 0]}>
           <Paper
             alignContent="center"
             style={{
-              width: `calc(${size.width}px - 8 * ${theme.space.large})`,
+              width: `calc(${size.width}px - ${marginTimes} * ${theme.space.large})`,
             }}
           >
             <Paragraph
@@ -105,13 +98,10 @@ export const ScrollContent = () => {
             </Grid>
           </Paper>
         </HtmlBlock>
-        <HtmlBlock
-          center
-          position={[viewport.width / 4, -viewport.height * 3, 0]}
-        >
+        <HtmlBlock center position={[right, -8 * viewport.height, 0]}>
           <Paper
             style={{
-              width: `calc(${size.width / 2}px - 8 * ${theme.space.large})`,
+              width: `calc(${blockWidth}px - ${marginTimes} * ${theme.space.large})`,
             }}
           >
             <Header text={"Get in touch"} />
