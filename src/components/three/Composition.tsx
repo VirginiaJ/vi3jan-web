@@ -28,7 +28,7 @@ export const Composition = () => {
     () => [
       {
         url: "video/pexels-artem-podrez.mp4",
-        position: [0, 3.5, -6.5],
+        position: [0, 4, -6.5],
       },
       {
         url: "video/pexels-artem-podrez-blue.mp4",
@@ -66,11 +66,11 @@ export const Composition = () => {
       <ObjectGroup position={[0, 0, 0]}>
         {ringPositions.map((pos, i) => (
           <group key={`ring${pos}`}>
-            <Ring position={[0, -2, pos]} scale={ringScales[i]} />
+            <Ring position={[0, -1.95, pos]} scale={ringScales[i]} />
           </group>
         ))}
       </ObjectGroup>
-      <Model position={[0, -1.99, 0]} scale={1.5} rotation={[0, 0.2, 0]} />
+      <Model position={[0, -1.95, 0]} scale={1.5} rotation={[0, 0.2, 0]} />
       <ScrollContent />
       {videoTextures.map((texture, i) => (
         <VideoBackground
@@ -105,8 +105,8 @@ export const Composition = () => {
         castShadow
         position={[-3, 5, 1]}
         angle={0.3}
-        penumbra={1}
-        intensity={theme === "dark" ? 7 : 2}
+        penumbra={0.7}
+        intensity={theme === "dark" ? 4 : 2}
         color="#FF9F1D"
         distance={20}
         target={targRef3.current ?? targ}
@@ -122,7 +122,7 @@ export const Composition = () => {
       />
       <group ref={targRef1} position={[2 * left, 1, 1]} />
       <group ref={targRef2} position={[2 * right, 1, 1]} />
-      <group ref={targRef3} position={[-1.5, 0.3, 0]} />
+      <group ref={targRef3} position={[-1.5, 0.3, 0.5]} />
     </>
   )
 }
